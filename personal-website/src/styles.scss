@@ -3,7 +3,27 @@
 @plugin "daisyui" {
     
 }
+// Blue Grotto
+// #067593
 
-body {
-  background-color: #378faa;
+// Navy Blue
+// #055772
+
+// Baby Blue
+// #09a9c8
+
+// Midnight Blue
+// #001f3d
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #09a9c8;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
