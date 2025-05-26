@@ -14,16 +14,14 @@
 
 // Midnight Blue
 // #001f3d
-html, body {
-  height: 100%;
+body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   background-color: #09a9c8;
 }
 
-app-root {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+// home, projects {
+//   display: block;
+//   width: 100%;
+// }

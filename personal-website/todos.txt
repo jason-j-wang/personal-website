@@ -1,0 +1,2 @@
+- find a darker blue than midnight
+- find a way to make navbar sticky
