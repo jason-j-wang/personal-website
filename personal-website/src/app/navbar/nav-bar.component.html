@@ -7,13 +7,12 @@
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/projects">Projects</a></li>
+        <li><a routerLink="/home" (click)="resetBackgroundColour()">Home</a></li>
+        <li><a routerLink="/projects" (click)="scrollToTop()">Projects</a></li>
       </ul>
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost text-xl">Text here</a>
   </div>
   <div class="navbar-end">
    

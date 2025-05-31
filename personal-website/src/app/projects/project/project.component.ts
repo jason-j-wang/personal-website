@@ -15,13 +15,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
   }
 
   private scrollHandler = () => {
-    console.log('scroll event fired');
     this.updateBackground();
   };
 
   ngAfterViewInit() {
     if (this.isBrowser) {
-      console.log("added slitener");
       window.addEventListener('scroll', this.scrollHandler);
     }
   }
@@ -33,16 +31,15 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
   }
 
   updateBackground() {
-    console.log('here');
     const scrollTop = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const scrollFraction = scrollTop / maxScroll;
 
-    const startColor = [9, 169, 200];  // Tailwind blue-500
-    const endColor = [0, 31, 61];    // Tailwind purple-500
+    const startColour = [9, 169, 200];
+    const endColour = [0, 17, 34];
 
-    const interpolated = startColor.map((start, i) =>
-      Math.round(start + (endColor[i] - start) * scrollFraction)
+    const interpolated = startColour.map((start, i) =>
+      Math.round(start + (endColour[i] - start) * scrollFraction)
     );
 
     document.body.style.backgroundColor = `rgb(${interpolated.join(',')})`;
