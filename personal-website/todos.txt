@@ -1,2 +1,5 @@
-- find a darker blue than midnight
-- find a way to make navbar sticky
+- start working on projects section
+- create component for project modal
+    - place for images, text, links
+    - prev / next button
+
