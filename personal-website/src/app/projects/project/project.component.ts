@@ -1,16 +1,28 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  OnDestroy,
+  PLATFORM_ID,
+} from '@angular/core';
+import { NavigationHelper } from '../../helpers/navigationHelper';
 
 @Component({
   selector: 'project',
   imports: [],
   templateUrl: './project.component.html',
-  styleUrl: './project.component.scss'
+  styleUrl: './project.component.scss',
 })
 export class ProjectComponent implements AfterViewInit, OnDestroy {
   private isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private el: ElementRef,
+    private navHelper: NavigationHelper
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -19,8 +31,26 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
   };
 
   ngAfterViewInit() {
+    let doAnimation = false;
+    if (
+      this.navHelper.fromUrl !== '/projects' &&
+      this.navHelper.fromUrl !== null
+    ) {
+      doAnimation = true;
+    }
+
     if (this.isBrowser) {
       window.addEventListener('scroll', this.scrollHandler);
+
+      if (doAnimation) {
+        const content = this.el.nativeElement.querySelector('.project-start');
+        content?.classList.remove('animate-end');
+        content?.classList.add('animate-start');
+
+        window.requestAnimationFrame(() => {
+          content?.classList.add('animate-end');
+        });
+      }
     }
   }
 

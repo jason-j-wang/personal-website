@@ -5,7 +5,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   selector: 'nav-bar',
   imports: [RouterOutlet, RouterModule],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+  styleUrl: './nav-bar.component.scss',
 })
 export class NavBarComponent {
   scrollToTop(): void {

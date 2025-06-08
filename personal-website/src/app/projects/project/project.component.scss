@@ -1,0 +1,8 @@
+.project-start.animate-start {
+  transform: translateX(55%);
+}
+.project-start.animate-end {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 0.5s ease-out;
+}
