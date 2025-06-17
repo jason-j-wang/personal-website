@@ -32,9 +32,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     let doAnimation = false;
+
     if (
       this.navHelper.fromUrl !== '/projects' &&
-      this.navHelper.fromUrl !== null
+      this.navHelper.fromUrl !== null &&
+      this.navHelper.fromUrl !== '/'
     ) {
       doAnimation = true;
     }
