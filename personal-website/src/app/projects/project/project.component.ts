@@ -17,6 +17,7 @@ import { NavigationHelper } from '../../helpers/navigationHelper';
 })
 export class ProjectComponent implements AfterViewInit, OnDestroy {
   private isBrowser: boolean;
+  private deviceHeight: number = -1;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -28,6 +29,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
   private scrollHandler = () => {
     this.updateBackground();
+    this.updateProjectIntroCard();
   };
 
   ngAfterViewInit() {
@@ -42,6 +44,8 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     if (this.isBrowser) {
+      this.deviceHeight = window.innerHeight;
+
       window.addEventListener('scroll', this.scrollHandler);
 
       if (doAnimation) {
@@ -75,5 +79,18 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     );
 
     document.body.style.backgroundColor = `rgb(${interpolated.join(',')})`;
+  }
+
+  updateProjectIntroCard() {
+    console.log(window.scrollY);
+    const stopAt = 50;
+    const div = document.getElementById('project-intro');
+    if (window.scrollY > stopAt) {
+      div?.classList.remove('visible');
+      div?.classList.add('invisible');
+    } else {
+      div?.classList.remove('invisible');
+      div?.classList.add('visible');
+    }
   }
 }
