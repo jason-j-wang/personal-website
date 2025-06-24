@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, PLATFORM_ID } from "@angular/core";
 import { NavigationHelper } from "../../helpers/navigationHelper";
+import stickybits from "stickybits";
 
 @Component({
     selector: "project",
@@ -21,6 +22,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     private scrollHandler = () => {
+        console.log(window.scrollY);
         this.updateBackground();
         this.updateProjectIntroCard();
     };
@@ -73,15 +75,47 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     updateProjectIntroCard() {
-        console.log(window.scrollY);
-        const stopAt = 50;
+        const heightOffset = this.deviceHeight * 0.9 * 0.25;
+
+        const stopAt = 600;
         const div = document.getElementById("project-intro");
-        if (window.scrollY > stopAt) {
-            div?.classList.remove("visible");
-            div?.classList.add("invisible");
-        } else {
-            div?.classList.remove("invisible");
-            div?.classList.add("visible");
+        const boat = document.getElementById("project-boat");
+        if (div && boat) {
+            if (window.scrollY > stopAt) {
+                // Out of range
+                div.classList.remove("visible");
+                div.classList.add("invisible");
+
+                boat.classList.remove("visible");
+                boat.classList.add("invisible");
+
+                stickybits("#project-intro", {
+                    stickyBitStickyOffset: 0,
+                    useStickyClasses: false,
+                });
+
+                stickybits("#project-boat", {
+                    stickyBitStickyOffset: 0,
+                    useStickyClasses: false,
+                });
+            } else {
+                // Within range
+                div.classList.remove("invisible");
+                div.classList.add("visible");
+
+                boat.classList.remove("invisible");
+                boat.classList.add("visible");
+
+                stickybits("#project-intro", {
+                    stickyBitStickyOffset: heightOffset + this.deviceHeight * 0.1,
+                    useStickyClasses: true,
+                });
+
+                stickybits("#project-boat", {
+                    stickyBitStickyOffset: heightOffset + this.deviceHeight * 0.2,
+                    useStickyClasses: true,
+                });
+            }
         }
     }
 }

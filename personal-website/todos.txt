@@ -3,7 +3,9 @@
     - place for images, text, links
     - prev / next button
 
-ideas for transition:
-- make the original far way background have clouds
-    - might be better to have boat and clouds separate images (clouds have transparent bg)
-- then when scrolling, use a cloud to obscure everything then transition to close up boat
+proejct scrolling timeline:
+- initla intro
+- clouds transition into more zoomed up boat
+- zoom into image
+- wave transition into under water
+- have final bg for ocean bottom, have it slowly more opaque close to the bottom
