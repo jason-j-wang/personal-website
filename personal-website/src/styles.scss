@@ -1,7 +1,6 @@
 @import "tailwindcss";
 //https://daisyui.com/docs/config/
 @plugin "daisyui" {
-    
 }
 // Blue Grotto
 // #067593
@@ -15,10 +14,10 @@
 // Midnight Blue
 // #001f3d
 body {
-  margin: 0;
-  // display: flex;
-  // flex-direction: column;
-  background-color: #09a9c8;
+    margin: 0;
+    // display: flex;
+    // flex-direction: column;
+    background-color: #09a9c8;
 }
 
 // home, projects {
