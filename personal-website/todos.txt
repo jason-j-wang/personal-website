@@ -5,7 +5,16 @@
 
 proejct scrolling timeline:
 - initla intro
-- clouds transition into more zoomed up boat
-- zoom into image
-- wave transition into under water
+- clouds transition into more zoomed up boat / sub
+
+- wave transition into under water (waves move up)
 - have final bg for ocean bottom, have it slowly more opaque close to the bottom
+
+
+projects to list (newest to oldest):
+- this website
+- termiknow
+- 310 project
+- chess bot
+- 2 player fighter game
+- leetcode?

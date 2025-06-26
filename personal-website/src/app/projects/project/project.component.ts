@@ -25,6 +25,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         console.log(window.scrollY);
         this.updateBackground();
         this.updateProjectIntroCard();
+        this.updateClouds();
     };
 
     ngAfterViewInit() {
@@ -114,6 +115,39 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 stickybits("#project-boat", {
                     stickyBitStickyOffset: heightOffset + this.deviceHeight * 0.2,
                     useStickyClasses: true,
+                });
+            }
+        }
+    }
+
+    updateClouds() {
+        const fullCoverStart = 550;
+        const fullCoverEnd = 650;
+        const end = 1200;
+        const scroll = window.scrollY;
+
+        const cloud = document.getElementById("cloud-image");
+
+        if (cloud) {
+            if (scroll < fullCoverStart) {
+                cloud.style.transform = `translateX(${100 - (scroll / fullCoverStart) * 100}%)`;
+            } else if (fullCoverStart <= scroll && scroll <= fullCoverEnd) {
+                cloud.style.transform = `translateX(0%)`;
+            } else if (scroll <= end) {
+                cloud.style.transform = `translateX(${100 * ((scroll - fullCoverEnd) / (end - fullCoverEnd))}%)`;
+            } else {
+                cloud.style.transform = `translateX(100%)`;
+            }
+
+            if (scroll <= end) {
+                stickybits("#cloud-image", {
+                    stickyBitStickyOffset: this.deviceHeight * 0.1,
+                    useStickyClasses: true,
+                });
+            } else {
+                stickybits("#cloud-image", {
+                    stickyBitStickyOffset: 0,
+                    useStickyClasses: false,
                 });
             }
         }
