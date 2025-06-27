@@ -8,6 +8,10 @@
     transition: transform 0.5s ease-out;
 }
 
-.clouds {
+.clouds-left {
+    transform: translateX(-100%);
+}
+
+.clouds-right {
     transform: translateX(100%);
 }

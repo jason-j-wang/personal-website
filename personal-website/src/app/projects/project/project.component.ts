@@ -126,26 +126,35 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         const end = 1200;
         const scroll = window.scrollY;
 
-        const cloud = document.getElementById("cloud-image");
+        const leftCloud = document.getElementById("cloud-image-left");
+        const rightCloud = document.getElementById("cloud-image-right");
 
-        if (cloud) {
+        if (leftCloud && rightCloud) {
             if (scroll < fullCoverStart) {
-                cloud.style.transform = `translateX(${100 - (scroll / fullCoverStart) * 100}%)`;
+                leftCloud.style.transform = `translateX(${-100 + (scroll / fullCoverStart) * 60}%)`;
+                rightCloud.style.transform = `translateX(${100 - (scroll / fullCoverStart) * 60}%)`;
             } else if (fullCoverStart <= scroll && scroll <= fullCoverEnd) {
-                cloud.style.transform = `translateX(0%)`;
+                leftCloud.style.transform = `translateX(-40%)`;
+                rightCloud.style.transform = `translateX(40%)`;
             } else if (scroll <= end) {
-                cloud.style.transform = `translateX(${100 * ((scroll - fullCoverEnd) / (end - fullCoverEnd))}%)`;
+                leftCloud.style.transform = `translateX(${
+                    -40 - 60 * ((scroll - fullCoverEnd) / (end - fullCoverEnd))
+                }%)`;
+                rightCloud.style.transform = `translateX(${
+                    40 + 60 * ((scroll - fullCoverEnd) / (end - fullCoverEnd))
+                }%)`;
             } else {
-                cloud.style.transform = `translateX(100%)`;
+                leftCloud.style.transform = `translateX(-100%)`;
+                rightCloud.style.transform = `translateX(100%)`;
             }
 
             if (scroll <= end) {
-                stickybits("#cloud-image", {
+                stickybits("#cloud-container", {
                     stickyBitStickyOffset: this.deviceHeight * 0.1,
                     useStickyClasses: true,
                 });
             } else {
-                stickybits("#cloud-image", {
+                stickybits("#cloud-container", {
                     stickyBitStickyOffset: 0,
                     useStickyClasses: false,
                 });
