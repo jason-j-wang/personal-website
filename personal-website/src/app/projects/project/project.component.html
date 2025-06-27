@@ -1,16 +1,27 @@
-<div style="height: 4000px">
-    <div id="project-start" class="project-start flex justify-between h-[180vh] animate-end">
-        <img id="project-boat" class="ml-[20vw] mt-[32.5vh] w-[30vh] h-[30vh]" src="/temp_boat2.png" alt="Boat" />
+<div style="height: 10000px">
+    <div id="project-start" class="project-start h-[360vh] animate-end">
+        <div id="ocean-intro">
+            <div [hidden]="!inSky" class="ocean1 flex justify-between h-[90vh]">
+                <img
+                    id="project-boat"
+                    class="ml-[20vw] mt-[32.5vh] w-[30vh] h-[30vh]"
+                    src="/temp_boat2.png"
+                    alt="Boat"
+                />
 
-        <div
-            id="project-intro"
-            class="card card-side fixed bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh]"
-        >
-            test
+                <div
+                    id="project-intro"
+                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh]"
+                >
+                    test
+                </div>
+            </div>
+
+            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 h-[90vh]">test</div>
         </div>
     </div>
 
-    <div id="cloud-countainer" class="z-10 fixed overflow-x-hidden top-[10vh] h-[360vh]">
+    <div id="cloud-container" class="z-10 fixed overflow-x-hidden top-[10vh] h-[360vh]">
         <img
             id="cloud-image-right"
             class="clouds clouds-right w-[100vw] h-[90vh] object-cover"

@@ -8,6 +8,20 @@
     transition: transform 0.5s ease-out;
 }
 
+.ocean1 {
+    background-image: url(../../../../public/ocean_bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.ocean2 {
+    background-image: url(../../../../public/ocean2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .clouds-left {
     transform: translateX(-100%);
 }

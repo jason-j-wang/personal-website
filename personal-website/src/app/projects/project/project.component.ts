@@ -12,6 +12,10 @@ import stickybits from "stickybits";
 export class ProjectComponent implements AfterViewInit, OnDestroy {
     private isBrowser: boolean;
     private deviceHeight: number = -1;
+    private contentHeight: number = -1;
+
+    // variable for the beginning of projects section, used within the cloud transition
+    inSky: boolean = true;
 
     constructor(
         @Inject(PLATFORM_ID) private platformId: Object,
@@ -22,6 +26,16 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     private scrollHandler = () => {
+        /* 
+        ch = content height for scroll location
+        vh = view height
+        format:       html range,      scroll range
+        Intro:
+            start:     0 - 180vh,        0 - 1ch
+            boat:      180 - 540vh,      1 - 3ch
+        Clouds:        0 - 360vh,        0 - 2ch  
+        waves:         450 - 540vh,    2.5 - 3ch
+        */
         console.log(window.scrollY);
         this.updateBackground();
         this.updateProjectIntroCard();
@@ -41,6 +55,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
         if (this.isBrowser) {
             this.deviceHeight = window.innerHeight;
+            this.contentHeight = window.innerHeight * 0.9;
 
             window.addEventListener("scroll", this.scrollHandler);
 
@@ -76,54 +91,42 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     updateProjectIntroCard() {
-        const heightOffset = this.deviceHeight * 0.9 * 0.25;
-
-        const stopAt = 600;
-        const div = document.getElementById("project-intro");
-        const boat = document.getElementById("project-boat");
-        if (div && boat) {
-            if (window.scrollY > stopAt) {
+        const introStopAt = this.contentHeight;
+        const projectStopAt = 3 * this.contentHeight;
+        const oceanIntro = document.getElementById("ocean-intro");
+        if (oceanIntro) {
+            if (window.scrollY > projectStopAt) {
                 // Out of range
-                div.classList.remove("visible");
-                div.classList.add("invisible");
+                oceanIntro.classList.remove("visible");
+                oceanIntro.classList.add("invisible");
 
-                boat.classList.remove("visible");
-                boat.classList.add("invisible");
-
-                stickybits("#project-intro", {
-                    stickyBitStickyOffset: 0,
-                    useStickyClasses: false,
-                });
-
-                stickybits("#project-boat", {
+                stickybits("#ocean-intro", {
                     stickyBitStickyOffset: 0,
                     useStickyClasses: false,
                 });
             } else {
                 // Within range
-                div.classList.remove("invisible");
-                div.classList.add("visible");
+                oceanIntro.classList.remove("invisible");
+                oceanIntro.classList.add("visible");
 
-                boat.classList.remove("invisible");
-                boat.classList.add("visible");
-
-                stickybits("#project-intro", {
-                    stickyBitStickyOffset: heightOffset + this.deviceHeight * 0.1,
+                stickybits("#ocean-intro", {
+                    stickyBitStickyOffset: this.deviceHeight * 0.1,
                     useStickyClasses: true,
                 });
+            }
 
-                stickybits("#project-boat", {
-                    stickyBitStickyOffset: heightOffset + this.deviceHeight * 0.2,
-                    useStickyClasses: true,
-                });
+            if (window.scrollY > introStopAt) {
+                this.inSky = false;
+            } else {
+                this.inSky = true;
             }
         }
     }
 
     updateClouds() {
-        const fullCoverStart = 550;
-        const fullCoverEnd = 650;
-        const end = 1200;
+        const fullCoverStart = this.contentHeight - 50;
+        const fullCoverEnd = this.contentHeight + 50;
+        const end = 2 * this.contentHeight;
         const scroll = window.scrollY;
 
         const leftCloud = document.getElementById("cloud-image-left");
@@ -148,16 +151,14 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 rightCloud.style.transform = `translateX(100%)`;
             }
 
-            if (scroll <= end) {
-                stickybits("#cloud-container", {
-                    stickyBitStickyOffset: this.deviceHeight * 0.1,
-                    useStickyClasses: true,
-                });
-            } else {
-                stickybits("#cloud-container", {
-                    stickyBitStickyOffset: 0,
-                    useStickyClasses: false,
-                });
+            const cloudContainer = document.getElementById("cloud-container");
+
+            if (cloudContainer) {
+                if (scroll <= end) {
+                    cloudContainer.style.display = "";
+                } else {
+                    cloudContainer.style.display = "none";
+                }
             }
         }
     }
