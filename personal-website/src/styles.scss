@@ -15,9 +15,10 @@
 // #001f3d
 body {
     margin: 0;
-    // display: flex;
-    // flex-direction: column;
-    background-color: #09a9c8;
+    background-image: url(../public/ocean_bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 // home, projects {
