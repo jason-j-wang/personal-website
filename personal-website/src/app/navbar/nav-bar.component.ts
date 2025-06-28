@@ -9,6 +9,7 @@ import { NavigationHelper } from "../helpers/navigationHelper";
     styleUrl: "./nav-bar.component.scss",
 })
 export class NavBarComponent {
+    title = "Home";
     constructor(private navHelper: NavigationHelper, private router: Router) {}
 
     scrollToTop(): void {
@@ -20,8 +21,9 @@ export class NavBarComponent {
         document.body.style.backgroundColor = `rgb(${startColour.join(",")})`;
     }
 
-    updateUrl(): void {
+    updateUrl(title: string): void {
         const fullUrl = this.router.url;
         this.navHelper.fromUrl = fullUrl;
+        this.title = title;
     }
 }

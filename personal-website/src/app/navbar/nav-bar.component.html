@@ -14,19 +14,25 @@
             </div>
             <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li>
-                    <a routerLink="/home" (click)="resetBackgroundColour(); updateUrl()">Home</a>
+                    <a routerLink="/home" (click)="resetBackgroundColour(); updateUrl('Home')">Home</a>
                 </li>
                 <li>
-                    <a routerLink="/experience" (click)="resetBackgroundColour(); updateUrl()">Experience</a>
+                    <a routerLink="/experience" (click)="resetBackgroundColour(); updateUrl('Experience')"
+                        >Experience</a
+                    >
                 </li>
                 <li>
-                    <a routerLink="/projects" (click)="scrollToTop(); updateUrl()">Projects</a>
+                    <a routerLink="/projects" (click)="scrollToTop(); updateUrl('Projects')">Projects</a>
                 </li>
             </ul>
         </div>
     </div>
 
-    <div class="navbar-center"></div>
+    <div class="navbar-center">
+        <p>
+            <b>{{ title }}</b>
+        </p>
+    </div>
 
     <div class="navbar-end">
         <img class="h-[5vh]" src="/favicon.png" alt="Icon" />
