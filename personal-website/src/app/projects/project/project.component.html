@@ -1,5 +1,5 @@
 <div style="height: 10000px">
-    <div id="project-start" class="project-start h-[360vh] animate-end">
+    <div id="project-start" class="project-start h-[450vh] animate-end">
         <div id="ocean-intro">
             <div [hidden]="!inSky" class="ocean1 flex justify-between h-[90vh]">
                 <img
@@ -17,7 +17,21 @@
                 </div>
             </div>
 
-            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 h-[90vh]">test</div>
+            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex justify-between h-[90vh]">
+                <img
+                    id="project-boat"
+                    class="ml-[10vw] mt-[20vh] w-[60vh] h-[50vh]"
+                    src="/temp_zoomed_boat.png"
+                    alt="Boat"
+                />
+
+                <div
+                    id="project-intro"
+                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh]"
+                >
+                    test
+                </div>
+            </div>
         </div>
     </div>
 
@@ -35,6 +49,10 @@
             src="/clouds_temp.jpg"
             alt="Clouds"
         />
+    </div>
+
+    <div id="waves" class="h-[90vh] absolute top-0 mt-[360vh] z-20">
+        <img id="waves-image" class="waves w-[100vw] h-[90vh] object-cover" src="/temp_waves.jpg" alt="Waves" />
     </div>
 </div>
 

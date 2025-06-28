@@ -18,3 +18,12 @@ projects to list (newest to oldest):
 - chess bot
 - 2 player fighter game
 - leetcode?
+
+
+image notes:
+home page:
+- for top down, no sky, try to make main ocean colour the same
+- 2 diff cloud images? for layering and possible animating
+
+project page:
+- for waves, make the bottom part a constant colour (easy transition into bg colour)

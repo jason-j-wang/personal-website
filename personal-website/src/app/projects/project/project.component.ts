@@ -92,7 +92,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
     updateProjectIntroCard() {
         const introStopAt = this.contentHeight;
-        const projectStopAt = 3 * this.contentHeight;
+        const projectStopAt = 4 * this.contentHeight;
         const oceanIntro = document.getElementById("ocean-intro");
         if (oceanIntro) {
             if (window.scrollY > projectStopAt) {

@@ -16,7 +16,7 @@ export class NavBarComponent {
     }
 
     resetBackgroundColour(): void {
-        const startColour = [9, 169, 200];
+        const startColour = [0, 162, 232];
         document.body.style.backgroundColor = `rgb(${startColour.join(",")})`;
     }
 
