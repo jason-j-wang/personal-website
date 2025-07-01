@@ -1,4 +1,4 @@
-- start working on projects section
+2- start working on projects section
 - create component for project modal
     - place for images, text, links
     - prev / next button
@@ -12,12 +12,13 @@ proejct scrolling timeline:
 
 
 projects to list (newest to oldest):
-- this website
-- termiknow
-- 310 project
-- chess bot
-- 2 player fighter game
-- leetcode?
+- leetcode (make this the above water one for simplicity)
+- this website 5
+- termiknow 4
+- 310 project 3
+- chess bot 2
+- 2 player fighter game 1
+
 
 
 image notes:

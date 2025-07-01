@@ -36,10 +36,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         Clouds:        0 - 360vh,        0 - 2ch  
         waves:         450 - 540vh,    2.5 - 3ch
         */
-        console.log(window.scrollY);
+        console.log(window.scrollY / this.deviceHeight);
         this.updateBackground();
         this.updateProjectIntroCard();
         this.updateClouds();
+        this.updateProjects();
     };
 
     ngAfterViewInit() {
@@ -78,16 +79,20 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     updateBackground() {
-        const scrollTop = window.scrollY;
+        const scroll = window.scrollY;
+        const startHeight = this.contentHeight * 4.5;
         const maxScroll = document.body.scrollHeight - window.innerHeight;
-        const scrollFraction = scrollTop / maxScroll;
+        const scrollFraction = (scroll - startHeight) / (maxScroll - startHeight);
 
-        const startColour = [9, 169, 200];
+        const startColour = [8, 164, 236];
         const endColour = [0, 17, 34];
 
-        const interpolated = startColour.map((start, i) => Math.round(start + (endColour[i] - start) * scrollFraction));
-
-        document.body.style.backgroundColor = `rgb(${interpolated.join(",")})`;
+        if (scroll >= startHeight) {
+            const interpolated = startColour.map((start, i) =>
+                Math.round(start + (endColour[i] - start) * scrollFraction)
+            );
+            document.body.style.backgroundColor = `rgb(${interpolated.join(",")})`;
+        }
     }
 
     updateProjectIntroCard() {
@@ -161,5 +166,10 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 }
             }
         }
+    }
+
+    updateProjects() {
+        const numProjects = 5;
+        const projectTotalHeight = this.contentHeight * 2;
     }
 }
