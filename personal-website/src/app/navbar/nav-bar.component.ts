@@ -9,8 +9,14 @@ import { NavigationHelper } from "../helpers/navigationHelper";
     styleUrl: "./nav-bar.component.scss",
 })
 export class NavBarComponent {
-    title = "Home";
+    title = "";
     constructor(private navHelper: NavigationHelper, private router: Router) {}
+
+    ngAfterViewInit() {
+        console.log(window.location.href);
+        const title = window.location.href.split("/").slice(-1)[0];
+        this.title = title.charAt(0).toUpperCase() + title.slice(1);
+    }
 
     scrollToTop(): void {
         window.scrollTo({ top: 0, behavior: "smooth" });
