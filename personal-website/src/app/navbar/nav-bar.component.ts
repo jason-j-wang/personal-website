@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Inject, PLATFORM_ID } from "@angular/core";
 import { Router, RouterModule, RouterOutlet } from "@angular/router";
 import { NavigationHelper } from "../helpers/navigationHelper";
+import { isPlatformBrowser } from "@angular/common";
 
 @Component({
     selector: "nav-bar",
@@ -10,12 +11,20 @@ import { NavigationHelper } from "../helpers/navigationHelper";
 })
 export class NavBarComponent {
     title = "";
-    constructor(private navHelper: NavigationHelper, private router: Router) {}
+    constructor(
+        @Inject(PLATFORM_ID) private platformId: Object,
+        private navHelper: NavigationHelper,
+        private router: Router
+    ) {}
 
     ngAfterViewInit() {
-        console.log(window.location.href);
-        const title = window.location.href.split("/").slice(-1)[0];
-        this.title = title.charAt(0).toUpperCase() + title.slice(1);
+        if (isPlatformBrowser(this.platformId)) {
+            setTimeout(() => {
+                console.log(window.location.href);
+                const title = window.location.href.split("/").slice(-1)[0];
+                this.title = title.charAt(0).toUpperCase() + title.slice(1);
+            });
+        }
     }
 
     scrollToTop(): void {

@@ -26,16 +26,6 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     private scrollHandler = () => {
-        /* 
-        ch = content height for scroll location
-        vh = view height
-        format:       html range,      scroll range
-        Intro:
-            start:     0 - 180vh,        0 - 1ch
-            boat:      180 - 540vh,      1 - 3ch
-        Clouds:        0 - 360vh,        0 - 2ch  
-        waves:         450 - 540vh,    2.5 - 3ch
-        */
         console.log(window.scrollY / this.deviceHeight);
         this.updateBackground();
         this.updateProjectIntroCard();
@@ -171,5 +161,10 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     updateProjects() {
         const numProjects = 5;
         const projectTotalHeight = this.contentHeight * 2;
+        const projectsStart = this.contentHeight * 4.5;
+
+        for (let i = 1; i <= numProjects; i++) {
+            const start = projectsStart + (numProjects - i) * projectTotalHeight;
+        }
     }
 }
