@@ -26,12 +26,16 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     private scrollHandler = () => {
+        this.updateElements();
+    };
+
+    updateElements() {
         console.log(window.scrollY / this.deviceHeight);
         this.updateBackground();
         this.updateProjectIntroCard();
         this.updateClouds();
         this.updateProjects();
-    };
+    }
 
     ngAfterViewInit() {
         let doAnimation = false;
@@ -71,17 +75,20 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     updateBackground() {
         const scroll = window.scrollY;
         const startHeight = this.contentHeight * 4.5;
-        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const maxScroll = document.body.scrollHeight - window.innerHeight - this.contentHeight;
+
         const scrollFraction = (scroll - startHeight) / (maxScroll - startHeight);
 
         const startColour = [8, 164, 236];
         const endColour = [0, 17, 34];
 
-        if (scroll >= startHeight) {
+        if (scroll >= startHeight && scroll <= maxScroll) {
             const interpolated = startColour.map((start, i) =>
                 Math.round(start + (endColour[i] - start) * scrollFraction)
             );
             document.body.style.backgroundColor = `rgb(${interpolated.join(",")})`;
+        } else if (scroll > maxScroll) {
+            document.body.style.backgroundColor = `rgb(${endColour.join(",")})`;
         }
     }
 
@@ -188,16 +195,6 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             }
 
             if (div) {
-                // if (scroll < start || scroll > end) {
-                //     div.style.opacity = "0";
-                // } else if (scroll >= fadeInStart && scroll <= fadeInEnd) {
-                //     div.style.opacity = `${scroll / fadeInEnd}`;
-                // } else if (scroll >= fadeOutStart && scroll <= fadeOutEnd) {
-                //     div.style.opacity = `${1 - scroll / fadeOutEnd}`;
-                // } else {
-                //     div.style.opacity = "1";
-                // }
-
                 if (scroll >= fadeInEnd && scroll <= fadeOutStart) {
                     div.style.opacity = "1";
                 } else {
