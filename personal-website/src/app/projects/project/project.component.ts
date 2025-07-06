@@ -162,9 +162,48 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         const numProjects = 5;
         const projectTotalHeight = this.contentHeight * 2;
         const projectsStart = this.contentHeight * 4.5;
+        const scroll = window.scrollY;
 
         for (let i = 1; i <= numProjects; i++) {
             const start = projectsStart + (numProjects - i) * projectTotalHeight;
+            const end = start + projectTotalHeight;
+
+            const fadeInStart = start;
+            const fadeInEnd = start + this.contentHeight * 0.5;
+            const fadeOutStart = end - this.contentHeight * 0.5;
+            const fadeOutEnd = end;
+
+            const div = document.getElementById(`project-${i}`);
+
+            if (scroll >= start && scroll <= end) {
+                stickybits(`#project-${i}`, {
+                    stickyBitStickyOffset: this.deviceHeight * 0.1,
+                    useStickyClasses: true,
+                });
+            } else {
+                stickybits(`#project-${i}`, {
+                    stickyBitStickyOffset: 0,
+                    useStickyClasses: false,
+                });
+            }
+
+            if (div) {
+                // if (scroll < start || scroll > end) {
+                //     div.style.opacity = "0";
+                // } else if (scroll >= fadeInStart && scroll <= fadeInEnd) {
+                //     div.style.opacity = `${scroll / fadeInEnd}`;
+                // } else if (scroll >= fadeOutStart && scroll <= fadeOutEnd) {
+                //     div.style.opacity = `${1 - scroll / fadeOutEnd}`;
+                // } else {
+                //     div.style.opacity = "1";
+                // }
+
+                if (scroll >= fadeInEnd && scroll <= fadeOutStart) {
+                    div.style.opacity = "1";
+                } else {
+                    div.style.opacity = "0";
+                }
+            }
         }
     }
 }
