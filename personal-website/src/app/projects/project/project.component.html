@@ -11,9 +11,20 @@
 
                 <div
                     id="project-intro"
-                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh]"
+                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[30vh] right-[15vw] mt-[22.5vh] flex justify-center items-center"
                 >
-                    test
+                    <div class="w-[80%]">
+                        <div class="space-y-4">
+                            <h2><b>Projects</b></h2>
+                            <p>
+                                Here are some of the projects that I have created over the past few years. Scroll or
+                                click the buttons to dive right in!
+                            </p>
+                        </div>
+                        <div class="w-[100%] mt-[20px] flex justify-end">
+                            <button class="btn btn-soft" (click)="scrollTo(2)">Next ></button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -27,25 +38,39 @@
 
                 <div
                     id="project-intro"
-                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh]"
+                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh] justify-center items-center"
                 >
-                    test
+                    <div class="w-[80%]">
+                        <div class="card-body">
+                            <h2 class="card-title">LeetCode</h2>
+
+                            <div>some visualization here</div>
+                            <p>
+                                It isn't an actual project, but I'm quite proud of my progress so far. I've also done a
+                                few weekly contests and placed 759 out of 30 923 participants for one of them!
+                            </p>
+                        </div>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-soft" (click)="scrollTo(0)">< Prev</button>
+                            <button class="btn btn-soft" (click)="scrollTo(5.5)">Next ></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="cloud-container" class="z-10 fixed overflow-x-hidden top-[10vh] h-[360vh]">
+    <div id="cloud-container" class="fixed overflow-x-hidden top-[10vh] h-[360vh] z-0 pointer-events-none">
         <img
             id="cloud-image-right"
-            class="clouds clouds-right w-[100vw] h-[90vh] object-cover"
+            class="clouds clouds-right w-[100vw] h-[90vh] object-cover z-10"
             src="/clouds_temp.jpg"
             alt="Clouds"
         />
 
         <img
             id="cloud-image-left"
-            class="clouds absolute top-0 clouds-left w-[100vw] h-[90vh] object-cover"
+            class="clouds absolute top-0 clouds-left w-[100vw] h-[90vh] object-cover z-10"
             src="/clouds_temp.jpg"
             alt="Clouds"
         />
@@ -61,7 +86,17 @@
                 id="project-5-card"
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] right-[7vw] mt-[22.5vh]"
             >
-                test
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">New movie is released!</h2>
+                    <p>Click the button to watch on Jetflix app.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-soft" (click)="scrollTo(2)">< Prev</button>
+                        <button class="btn btn-soft" (click)="scrollTo(7.5)">Next ></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -71,7 +106,17 @@
                 id="project-4-card"
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] left-[7vw] mt-[22.5vh]"
             >
-                test
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">New movie is released!</h2>
+                    <p>Click the button to watch on Jetflix app.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-soft" (click)="scrollTo(5.5)">< Prev</button>
+                        <button class="btn btn-soft" (click)="scrollTo(9.5)">Next ></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -81,7 +126,17 @@
                 id="project-3-card"
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] right-[7vw] mt-[22.5vh]"
             >
-                test
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">New movie is released!</h2>
+                    <p>Click the button to watch on Jetflix app.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-soft" (click)="scrollTo(7.5)">< Prev</button>
+                        <button class="btn btn-soft" (click)="scrollTo(11.5)">Next ></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +146,17 @@
                 id="project-2-card"
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] left-[7vw] mt-[22.5vh]"
             >
-                test
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">New movie is released!</h2>
+                    <p>Click the button to watch on Jetflix app.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-soft" (click)="scrollTo(9.5)">< Prev</button>
+                        <button class="btn btn-soft" (click)="scrollTo(13.5)">Next ></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -101,14 +166,31 @@
                 id="project-1-card"
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] right-[7vw] mt-[22.5vh]"
             >
-                test
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">New movie is released!</h2>
+                    <p>Click the button to watch on Jetflix app.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-soft" (click)="scrollTo(11.5)">< Prev</button>
+                        <button class="btn btn-soft" (click)="scrollTo(15)">Next ></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="ocean-floor" class="ocean-floor flex justify-center [90vh]">
-        <div id="project-end-card" class="card card-side bg-base-100 shadow-sm w-[20%] h-[5vh] mb-[5vh] mt-[80vh]">
-            The End
+        <div
+            id="project-end-card"
+            class="card card-side bg-base-100 shadow-sm w-[30%] h-[7vh] mb-[5vh] mt-[80vh] flex justify-center items-center"
+        >
+            <div class="w-[95%] flex justify-between items-center">
+                <button class="btn btn-soft" (click)="scrollTo(13.5)">< Prev</button>
+                The End!
+                <button class="btn btn-soft" (click)="scrollTo(0)">Back to Top ></button>
+            </div>
         </div>
     </div>
 </div>

@@ -203,4 +203,12 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             }
         }
     }
+
+    scrollTo(numContentHeights: number) {
+        console.log(numContentHeights);
+        window.scrollTo({
+            top: this.contentHeight * numContentHeights,
+            behavior: "smooth",
+        });
+    }
 }
