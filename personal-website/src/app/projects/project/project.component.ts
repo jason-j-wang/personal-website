@@ -2,6 +2,7 @@ import { isPlatformBrowser } from "@angular/common";
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, PLATFORM_ID } from "@angular/core";
 import { NavigationHelper } from "../../helpers/navigationHelper";
 import stickybits from "stickybits";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: "project",
@@ -13,6 +14,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     private isBrowser: boolean;
     private deviceHeight: number = -1;
     private contentHeight: number = -1;
+    private ratio: number = 1;
 
     // variable for the beginning of projects section, used within the cloud transition
     inSky: boolean = true;
@@ -20,7 +22,8 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     constructor(
         @Inject(PLATFORM_ID) private platformId: Object,
         private el: ElementRef,
-        private navHelper: NavigationHelper
+        private navHelper: NavigationHelper,
+        private http: HttpClient
     ) {
         this.isBrowser = isPlatformBrowser(platformId);
     }
@@ -49,10 +52,25 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         }
 
         if (this.isBrowser) {
-            this.deviceHeight = window.innerHeight;
-            this.contentHeight = window.innerHeight * 0.9;
+            this.ratio = window.devicePixelRatio;
+            console.log(this.ratio);
+            this.deviceHeight = window.innerHeight * this.ratio;
+            this.contentHeight = window.innerHeight * 0.9 * this.ratio;
+            document.documentElement.style.setProperty("--zoom-ratio", `${this.ratio}`);
 
             window.addEventListener("scroll", this.scrollHandler);
+
+            window.addEventListener("resize", () => {
+                const currentRatio = window.devicePixelRatio;
+
+                if (currentRatio !== this.ratio) {
+                    console.log("Zoom changed! New ratio:", currentRatio);
+                    this.ratio = currentRatio;
+                    this.deviceHeight = window.innerHeight * this.ratio;
+                    this.contentHeight = window.innerHeight * 0.9 * this.ratio;
+                    document.documentElement.style.setProperty("--zoom-ratio", `${currentRatio}`);
+                }
+            });
 
             if (doAnimation) {
                 const content = this.el.nativeElement.querySelector(".project-start");
@@ -63,7 +81,20 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                     content?.classList.add("animate-end");
                 });
             }
+
+            //this.fetchLeetcodeStats();
         }
+    }
+
+    fetchLeetcodeStats() {
+        console.log("fetch");
+        const url = "https://alfa-leetcode-api.onrender.com/jason--w/solved";
+        const data = this.http.get(url).subscribe({
+            next: (data) => {
+                console.log(data);
+            },
+            error: (err) => {},
+        });
     }
 
     ngOnDestroy() {

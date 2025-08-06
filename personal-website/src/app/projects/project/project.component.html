@@ -1,7 +1,7 @@
 <div style="z-index: 1">
-    <div id="project-start" class="project-start h-[450vh] animate-end">
+    <div id="project-start" class="project-start animate-end">
         <div id="ocean-intro">
-            <div [hidden]="!inSky" class="ocean1 flex justify-between h-[90vh]">
+            <div [hidden]="!inSky" class="ocean1 flex justify-between">
                 <img
                     id="project-boat"
                     class="ml-[20vw] mt-[32.5vh] w-[30vh] h-[30vh]"
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex justify-between h-[90vh]">
+            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex justify-between">
                 <img
                     id="project-boat"
                     class="ml-[10vw] mt-[20vh] w-[60vh] h-[50vh]"
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <h2 class="card-title">LeetCode</h2>
 
-                            <div>some visualization here</div>
+                            <div id="leetcode-visual">some visualization here</div>
                             <p>
                                 It isn't an actual project, but I'm quite proud of my progress so far. I've also done a
                                 few weekly contests and placed 759 out of 30 923 participants for one of them!
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <div id="cloud-container" class="fixed overflow-x-hidden top-[10vh] h-[360vh] z-0 pointer-events-none">
+    <div id="cloud-container" class="fixed overflow-x-hidden top-[10vh] z-0 pointer-events-none">
         <img
             id="cloud-image-right"
             class="clouds clouds-right w-[100vw] h-[90vh] object-cover z-10"
@@ -76,8 +76,8 @@
         />
     </div>
 
-    <div id="waves" class="h-[90vh] absolute top-0 mt-[360vh] z-20">
-        <img id="waves-image" class="waves w-[100vw] h-[90vh] object-cover" src="/temp_waves.jpg" alt="Waves" />
+    <div id="waves" class="waves-container absolute top-0 z-20">
+        <img id="waves-image" class="waves w-[100vw] object-cover" src="/temp_waves.jpg" alt="Waves" />
     </div>
 
     <div class="project-complete-container">

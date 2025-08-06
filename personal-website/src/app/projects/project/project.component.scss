@@ -8,6 +8,10 @@
     transition: transform 0.5s ease-out;
 }
 
+.project-start {
+    height: calc(450vh * var(--zoom-ratio, 1));
+}
+
 .ocean1 {
     background-image: url(../../../../public/ocean_bg.png);
     background-size: cover;
@@ -30,18 +34,30 @@
     transform: translateX(100%);
 }
 
+.cloud-container {
+    height: calc(360vh * var(--zoom-ratio, 1));
+}
+
 .project-complete-container {
-    height: 180vh;
+    height: calc(180vh * var(--zoom-ratio, 1));
     z-index: 10;
 }
 
 .project-container {
-    height: 90vh;
+    height: calc(90vh * var(--zoom-ratio, 1));
     transition: opacity 0.5s ease;
 }
 
 .ocean-floor {
     position: relative; /* parent must be positioned for ::before to be positioned absolutely inside */
+}
+
+.ocean1 {
+    height: calc(90vh * var(--zoom-ratio, 1));
+}
+
+.ocean2 {
+    height: calc(90vh * var(--zoom-ratio, 1));
 }
 
 .ocean-floor::before {
@@ -63,4 +79,13 @@
 
 p {
     font-size: 14px;
+}
+
+.waves-container {
+    height: calc(90vh * var(--zoom-ratio, 1));
+    margin-top: calc(360vh * var(--zoom-ratio, 1));
+}
+
+.waves {
+    height: calc(90vh * var(--zoom-ratio, 1));
 }
