@@ -81,6 +81,10 @@ p {
     font-size: 14px;
 }
 
+.sub-header {
+    font-size: 16px;
+}
+
 .waves-container {
     height: calc(90vh * var(--zoom-ratio, 1));
     margin-top: calc(360vh * var(--zoom-ratio, 1));

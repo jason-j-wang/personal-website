@@ -4,6 +4,13 @@ import { NavigationHelper } from "../../helpers/navigationHelper";
 import stickybits from "stickybits";
 import { HttpClient } from "@angular/common/http";
 
+interface LeetcodeData {
+    totalSolved: number;
+    easySolved: number;
+    mediumSolved: number;
+    hardSolved: number;
+}
+
 @Component({
     selector: "project",
     imports: [],
@@ -15,6 +22,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     private deviceHeight: number = -1;
     private contentHeight: number = -1;
     private ratio: number = 1;
+
+    totalQuestions = 0;
+    easyQuestions = 0;
+    mediumQuestions = 0;
+    hardQuestions = 0;
 
     // variable for the beginning of projects section, used within the cloud transition
     inSky: boolean = true;
@@ -82,16 +94,21 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 });
             }
 
-            //this.fetchLeetcodeStats();
+            this.fetchLeetcodeStats();
         }
     }
 
     fetchLeetcodeStats() {
         console.log("fetch");
-        const url = "https://alfa-leetcode-api.onrender.com/jason--w/solved";
+        const url = "https://leetscan.vercel.app/jason--w";
         const data = this.http.get(url).subscribe({
             next: (data) => {
+                const lcData = data as LeetcodeData;
                 console.log(data);
+                this.totalQuestions = lcData.totalSolved;
+                this.easyQuestions = lcData.easySolved;
+                this.mediumQuestions = lcData.mediumSolved;
+                this.hardQuestions = lcData.hardSolved;
             },
             error: (err) => {},
         });

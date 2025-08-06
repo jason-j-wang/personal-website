@@ -44,7 +44,20 @@
                         <div class="card-body">
                             <h2 class="card-title">LeetCode</h2>
 
-                            <div id="leetcode-visual">some visualization here</div>
+                            <div class="card bg-gray-700 p-4 w-[90%] shadow-inner">
+                                <p class="sub-header">My Account Stats:</p>
+                                <p><b>Total Questions Solved: </b>{{ totalQuestions }}</p>
+                                <p><b class="text-green-500">Easy: </b>{{ easyQuestions }}</p>
+                                <p><b class="text-yellow-500">Medium: </b>{{ mediumQuestions }}</p>
+                                <p><b class="text-red-500">Hard: </b>{{ hardQuestions }}</p>
+                                <a
+                                    href="https://leetcode.com/u/jason--w/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-blue-400 underline"
+                                    >View full profile</a
+                                >
+                            </div>
                             <p>
                                 It isn't an actual project, but I'm quite proud of my progress so far. I've also done a
                                 few weekly contests and placed 759 out of 30 923 participants for one of them!
