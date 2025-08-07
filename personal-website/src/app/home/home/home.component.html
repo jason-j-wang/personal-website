@@ -1,6 +1,6 @@
 <div class="flex items-center justify-between w-[100%] mt-[20vh] overflow-x-hidden">
     <div class="background fixed top-[10vh] h-[90vh] w-[100vw] z-0"></div>
-    <div class="card card-side bg-base-100 shadow-sm ml-[20%] z-2">
+    <div class="card card-side bg-base-100 shadow-sm w-[35rem] ml-[20%] z-2">
         <div class="flex flex-col ml-10 mr-5">
             <div class="avatar avatar-online w-30 h-30 flex justify-center mt-10">
                 <div class="w-30 h-30 rounded-full">
@@ -8,12 +8,28 @@
                 </div>
             </div>
 
-            <div class="flex justify-center mt-10">link icons here</div>
+            <div class="flex justify-center mt-10 gap-3">
+                <a href="https://github.com/jason-j-wang" target="_blank" rel="noopener noreferrer"
+                    ><fa-icon [icon]="faGithub" size="2x"></fa-icon
+                ></a>
+                <a href="https://linkedin.com/in/jason-j-wang-" target="_blank" rel="noopener noreferrer"
+                    ><fa-icon [icon]="faLinkedin" size="2x"></fa-icon
+                ></a>
+            </div>
         </div>
 
         <div class="card-body">
-            <h2 class="card-title">New movie is released!</h2>
-            <p>Click the button to watch on Jetflix app.</p>
+            <h2 class="card-title">Hey there! 👋</h2>
+            <p>I'm Jason, a software engineer building clean and efficient full-stack web applications.</p>
+            <br />
+            <p>
+                I'm currently searching for new-grad opportunities and finishing my undergraduate computer science
+                degree at the University of British Columbia.
+            </p>
+            <p>
+                When not coding, I also enjoy weightlifting, playing games, and watching documentaries. I'm also an F1
+                and NBA fan!
+            </p>
             <div class="card-actions justify-end"></div>
         </div>
     </div>
