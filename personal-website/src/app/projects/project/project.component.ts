@@ -3,6 +3,8 @@ import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, PLATFORM_ID } 
 import { NavigationHelper } from "../../helpers/navigationHelper";
 import stickybits from "stickybits";
 import { HttpClient } from "@angular/common/http";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 interface LeetcodeData {
     totalSolved: number;
@@ -13,7 +15,7 @@ interface LeetcodeData {
 
 @Component({
     selector: "project",
-    imports: [],
+    imports: [FontAwesomeModule],
     templateUrl: "./project.component.html",
     styleUrl: "./project.component.scss",
 })
@@ -27,6 +29,8 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     easyQuestions = 0;
     mediumQuestions = 0;
     hardQuestions = 0;
+
+    faGithub = faGithub;
 
     // variable for the beginning of projects section, used within the cloud transition
     inSky: boolean = true;

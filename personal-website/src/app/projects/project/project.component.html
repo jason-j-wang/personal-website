@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex justify-between">
+            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex justify-between items-center">
                 <img
                     id="project-boat"
                     class="ml-[10vw] mt-[20vh] w-[60vh] h-[50vh]"
@@ -38,7 +38,7 @@
 
                 <div
                     id="project-intro"
-                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[45vh] right-[15vw] mt-[22.5vh] justify-center items-center"
+                    class="card card-side bg-base-100 shadow-sm w-[30%] right-[15vw] justify-center items-center"
                 >
                     <div class="w-[80%]">
                         <div class="card-body">
@@ -63,7 +63,7 @@
                                 few weekly contests and placed 621 out of 34 372 participants for one of them!
                             </p>
                         </div>
-                        <div class="card-actions justify-end">
+                        <div class="card-actions justify-end mb-5">
                             <button class="btn btn-soft" (click)="scrollTo(0)">< Prev</button>
                             <button class="btn btn-soft" (click)="scrollTo(5.5)">Next ></button>
                         </div>
@@ -100,12 +100,34 @@
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] right-[7vw] mt-[22.5vh]"
             >
                 <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                    <img src="/temp_website.JPG" alt="Project Picture" />
                 </figure>
-                <div class="card-body">
-                    <h2 class="card-title">New movie is released!</h2>
-                    <p>Click the button to watch on Jetflix app.</p>
-                    <div class="card-actions justify-end">
+                <div class="card-body w-[50%]">
+                    <h2 class="card-title">Personal Website</h2>
+                    <i class="mb-2">May 2025 - August 2025</i>
+                    <div class="flex gap-3 mb-7">
+                        <div class="badge badge-soft badge-info">Angular</div>
+                        <div class="badge badge-soft badge-info">Tailwind</div>
+                        <div class="badge badge-soft badge-info">DaisyUI</div>
+                        <div class="badge badge-soft badge-info">Insert deploy tool here</div>
+                    </div>
+                    <div class="mb-2">
+                        <p>
+                            The website you are viewing right now! The ocean theme was inspired by my childhood
+                            fascination with the ocean. All art here is custom made by my good friend Jaden.
+                        </p>
+                    </div>
+                    <div class="flex justify-start gap-2">
+                        <span>Check it out:</span>
+                        <a
+                            href="https://github.com/jason-j-wang/personal-website"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            ><fa-icon [icon]="faGithub" size="2x"></fa-icon
+                        ></a>
+                    </div>
+
+                    <div class="card-actions justify-end mt-auto">
                         <button class="btn btn-soft" (click)="scrollTo(2)">< Prev</button>
                         <button class="btn btn-soft" (click)="scrollTo(7.5)">Next ></button>
                     </div>
@@ -120,12 +142,35 @@
                 class="card card-side bg-base-100 shadow-sm w-[50%] h-[45vh] left-[7vw] mt-[22.5vh]"
             >
                 <figure>
-                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+                    <img src="/termiknow_picture.png" alt="Project Picture" />
                 </figure>
-                <div class="card-body">
-                    <h2 class="card-title">New movie is released!</h2>
-                    <p>Click the button to watch on Jetflix app.</p>
-                    <div class="card-actions justify-end">
+                <div class="card-body w-[50%]">
+                    <h2 class="card-title">Termiknow</h2>
+                    <i class="mb-2">January 2025 - January 2025</i>
+                    <div class="flex gap-3 mb-7">
+                        <div class="badge badge-soft badge-info">Python</div>
+                        <div class="badge badge-soft badge-info">chromadb</div>
+                        <div class="badge badge-soft badge-info">textual</div>
+                    </div>
+                    <div class="mb-2">
+                        <p>
+                            Termiknow is a command search tool that helps developers search up the syntax and parameters
+                            of terminal commands. My team submitted this project for nwHacks 2025 and we ended up
+                            <b>winning the hackathon!</b>
+                        </p>
+                    </div>
+                    <div class="flex justify-start gap-2 items-center">
+                        <span>Check it out:</span>
+                        <a href="https://github.com/zhangLily2020/nwhacks2025" target="_blank" rel="noopener noreferrer"
+                            ><fa-icon [icon]="faGithub" size="2x"></fa-icon
+                        ></a>
+
+                        <a href="https://devpost.com/software/termiknow" target="_blank" rel="noopener noreferrer"
+                            ><img class="icon-devpost" src="/devpost_logo.png"
+                        /></a>
+                    </div>
+
+                    <div class="card-actions justify-end mt-auto">
                         <button class="btn btn-soft" (click)="scrollTo(5.5)">< Prev</button>
                         <button class="btn btn-soft" (click)="scrollTo(9.5)">Next ></button>
                     </div>
