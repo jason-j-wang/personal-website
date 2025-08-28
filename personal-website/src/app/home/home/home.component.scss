@@ -4,3 +4,34 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+@media (max-width: 992px) {
+    .home-container {
+        justify-content: center;
+    }
+
+    .card {
+        max-width: 90vw !important;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .card {
+        top: 3%;
+    }
+}
+
+@media (max-width: 430px) {
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .pfp {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+        width: 100%;
+    }
+}
