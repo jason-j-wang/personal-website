@@ -4,3 +4,27 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+@media (max-width: 992px) {
+    .experience-container {
+        justify-content: center;
+    }
+
+    .card {
+        max-width: 90vw !important;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .card {
+        top: 3%;
+    }
+}
+
+@media (max-width: 430px) {
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
