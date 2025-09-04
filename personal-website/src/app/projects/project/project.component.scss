@@ -26,6 +26,15 @@
     background-repeat: no-repeat;
 }
 
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    will-change: transform;
+}
+
 .clouds-left {
     transform: translateX(-100%);
 }
@@ -49,7 +58,7 @@
 }
 
 .ocean-floor {
-    position: relative; /* parent must be positioned for ::before to be positioned absolutely inside */
+    position: relative;
 }
 
 .ocean1 {
@@ -105,4 +114,49 @@ span {
 
     // mask: url(../../../../public/devpost_logo.png) no-repeat center;
     // -webkit-mask: url(../../../../public/devpost_logo.png) no-repeat center;
+}
+
+@media (min-width: 993px) {
+    #last-project-ocean {
+        align-items: center;
+        justify-content: end;
+    }
+
+    .card {
+        margin-right: 10vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        max-width: 90vw !important;
+    }
+
+    #project-start-intro {
+        width: 90vw;
+        margin-top: 5vh;
+    }
+
+    #project-start-boat {
+        margin-left: 5vw !important;
+        margin-top: 35vh !important;
+    }
+
+    #last-project-ocean {
+        align-items: start;
+        justify-content: center;
+    }
+}
+
+// @media (max-width: 767px) {
+//     .card {
+//         top: 3%;
+//     }
+// }
+
+@media (max-width: 430px) {
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

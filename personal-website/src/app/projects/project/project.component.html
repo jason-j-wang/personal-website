@@ -1,46 +1,43 @@
 <div style="z-index: 1">
     <div id="project-start" class="project-start animate-end">
-        <div id="ocean-intro">
-            <div [hidden]="!inSky" class="ocean1 flex justify-between">
-                <img
-                    id="project-boat"
-                    class="ml-[20vw] mt-[32.5vh] w-[30vh] h-[30vh]"
-                    src="/temp_boat2.png"
-                    alt="Boat"
-                />
+        <div id="ocean-intro" class="overflow-x-hidden">
+            <div [hidden]="!inSky" class="ocean1 flex justify-between justify-center items-center">
+                <div class="flex flex-wrap justify-center gap-x-[5vw] gap-y-[5vw]">
+                    <img id="project-boat" class="w-[30vh] h-[30vh] z-1" src="/temp_boat2.png" alt="Boat" />
 
-                <div
-                    id="project-intro"
-                    class="card card-side bg-base-100 shadow-sm w-[30%] h-[30vh] right-[15vw] mt-[22.5vh] flex justify-center items-center"
-                >
-                    <div class="w-[80%]">
-                        <div class="space-y-4">
-                            <h2><b>Projects</b></h2>
-                            <p>
-                                Here are some of the projects that I have created over the past few years. Scroll or
-                                click the buttons to dive right in!
-                            </p>
-                        </div>
-                        <div class="w-[100%] mt-[20px] flex justify-end">
-                            <button class="btn btn-soft" (click)="scrollTo(2)">Next ></button>
+                    <div
+                        id="project-intro"
+                        class="card card-side bg-base-100 shadow-sm w-[35rem] flex justify-center items-center"
+                    >
+                        <div class="card-body">
+                            <div class="space-y-4">
+                                <h2 class="card-title">Projects</h2>
+                                <p>
+                                    Here are some of the projects that I have created over the past few years. Scroll or
+                                    click the buttons to dive right in!
+                                </p>
+                            </div>
+                            <div class="w-[100%] mt-[20px] flex justify-end">
+                                <button class="btn btn-soft" (click)="scrollTo(2)">Next ></button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex justify-between items-center">
+            <div [hidden]="inSky" id="last-project-ocean" class="ocean2 flex">
                 <img
-                    id="project-boat"
-                    class="ml-[10vw] mt-[20vh] w-[60vh] h-[50vh]"
+                    id="project-start-boat"
+                    class="absolute top-0 left-0 ml-[10vw] mt-[20vh] w-[60vh] h-[50vh]"
                     src="/temp_zoomed_boat.png"
                     alt="Boat"
                 />
 
                 <div
-                    id="project-intro"
-                    class="card card-side bg-base-100 shadow-sm w-[30%] right-[15vw] justify-center items-center"
+                    id="project-start-intro"
+                    class="card card-side bg-base-100 shadow-sm w-[35rem] justify-center items-center"
                 >
-                    <div class="w-[80%]">
+                    <div class="w-[80%] justify-start">
                         <div class="card-body">
                             <h2 class="card-title">LeetCode</h2>
 
@@ -73,17 +70,17 @@
         </div>
     </div>
 
-    <div id="cloud-container" class="fixed overflow-x-hidden top-[10vh] z-0 pointer-events-none">
+    <div id="cloud-container" class="fixed overflow-clip top-[10vh] z-0 pointer-events-none w-[100%] h-[90vh]">
         <img
             id="cloud-image-right"
-            class="clouds clouds-right w-[100vw] h-[90vh] object-cover z-10"
+            class="clouds clouds-right w-[100%] h-[90vh] object-cover z-10"
             src="/clouds_temp.jpg"
             alt="Clouds"
         />
 
         <img
             id="cloud-image-left"
-            class="clouds absolute top-0 clouds-left w-[100vw] h-[90vh] object-cover z-10"
+            class="clouds clouds-left w-[100%] h-[90vh] object-cover z-10"
             src="/clouds_temp.jpg"
             alt="Clouds"
         />
@@ -104,7 +101,7 @@
                 </figure>
                 <div class="card-body w-[50%]">
                     <h2 class="card-title">Personal Website</h2>
-                    <div class="flex gap-3 mb-7">
+                    <div class="flex gap-3 mb-7 flex-wrap">
                         <div class="badge badge-soft badge-info">Angular</div>
                         <div class="badge badge-soft badge-info">Tailwind</div>
                         <div class="badge badge-soft badge-info">DaisyUI</div>
@@ -145,7 +142,7 @@
                 </figure>
                 <div class="card-body w-[50%]">
                     <h2 class="card-title">Termiknow</h2>
-                    <div class="flex gap-3 mb-7">
+                    <div class="flex gap-3 mb-7 flex-wrap">
                         <div class="badge badge-soft badge-info">Python</div>
                         <div class="badge badge-soft badge-info">chromadb</div>
                         <div class="badge badge-soft badge-info">textual</div>
@@ -187,7 +184,7 @@
                 </figure>
                 <div class="card-body w-[50%]">
                     <h2 class="card-title">InsightUBC</h2>
-                    <div class="flex gap-3 mb-7">
+                    <div class="flex gap-3 mb-7 flex-wrap">
                         <div class="badge badge-soft badge-info">TypeScript</div>
                         <div class="badge badge-soft badge-info">Chai</div>
                     </div>
@@ -218,7 +215,7 @@
                 </figure>
                 <div class="card-body w-[50%]">
                     <h2 class="card-title">Chess Bot</h2>
-                    <div class="flex gap-3 mb-7">
+                    <div class="flex gap-3 mb-7 flex-wrap">
                         <div class="badge badge-soft badge-info">Python</div>
                         <div class="badge badge-soft badge-info">pygame</div>
                         <div class="badge badge-soft badge-info">python-chess</div>
@@ -256,7 +253,7 @@
                 </figure>
                 <div class="card-body w-[50%]">
                     <h2 class="card-title">Showdown</h2>
-                    <div class="flex gap-3 mb-7">
+                    <div class="flex gap-3 mb-7 flex-wrap">
                         <div class="badge badge-soft badge-info">Python</div>
                         <div class="badge badge-soft badge-info">Codeskulptor</div>
                         <div class="badge badge-soft badge-info">simplegui</div>
