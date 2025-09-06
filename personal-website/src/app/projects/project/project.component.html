@@ -3,8 +3,8 @@
         <div id="ocean-intro" class="overflow-x-hidden">
             <div [hidden]="!inSky" class="ocean1 flex justify-between justify-center">
                 <div class="h-[90vh] flex items-center">
-                    <div class="flex flex-wrap justify-center gap-x-[5vw] gap-y-[5vw]">
-                        <img id="project-boat" class="w-[30vh] h-[30vh] z-1" src="/temp_boat2.png" alt="Boat" />
+                    <div class="flex flex-wrap justify-center gap-x-[5vw] gap-y-[5vw] items-center">
+                        <img id="project-boat" class="w-[30vh] h-[6vh] z-1" src="/boat_topdown.png" alt="Boat" />
 
                         <div
                             id="project-intro"
@@ -78,15 +78,15 @@
     <div id="cloud-container" class="fixed overflow-clip top-[10vh] z-0 pointer-events-none w-[100%] h-[90vh]">
         <img
             id="cloud-image-right"
-            class="clouds clouds-right w-[100%] h-[90vh] object-cover z-10"
-            src="/clouds_temp.jpg"
+            class="clouds clouds-right h-[90vh] object-cover object-left z-10"
+            src="/right_clouds.png"
             alt="Clouds"
         />
 
         <img
             id="cloud-image-left"
-            class="clouds clouds-left w-[100%] h-[90vh] object-cover z-10"
-            src="/clouds_temp.jpg"
+            class="clouds clouds-left h-[90vh] object-cover object-right z-10"
+            src="/left_clouds.png"
             alt="Clouds"
         />
     </div>
@@ -287,14 +287,14 @@
                     </div>
                 </div>
             </div>
-            \
         </div>
     </div>
 
-    <div id="ocean-floor" class="ocean-floor flex justify-center [90vh]">
+    <div id="ocean-floor" class="ocean-floor flex justify-center">
+        <img src="ocean_floor.png" class="w-[100%] object-cover" alt="Ocean Floor" />
         <div
             id="project-end-card"
-            class="card card-side bg-base-100 shadow-sm w-[30%] h-[7vh] mb-[5vh] mt-[80vh] flex justify-center items-center"
+            class="card card-side bg-base-100 shadow-sm absolute bottom-0 w-[30%] h-[7vh] mb-[5vh] flex justify-center items-center z-10"
         >
             <div class="w-[95%] flex justify-between items-center">
                 <button class="btn btn-soft" (click)="scrollTo(13.5)">< Prev</button>

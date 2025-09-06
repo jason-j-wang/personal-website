@@ -143,7 +143,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         const scrollFraction = (scroll - startHeight) / (maxScroll - startHeight);
 
         const startColour = [8, 164, 236];
-        const endColour = [0, 17, 34];
+        const endColour = [19, 40, 89];
 
         if (scroll >= startHeight && scroll <= maxScroll) {
             const interpolated = startColour.map((start, i) =>
@@ -193,23 +193,29 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         const fullCoverEnd = this.contentHeight + 50;
         const end = 2 * this.contentHeight;
         const scroll = window.scrollY;
+        let pctCover = 80;
+        if (window.innerWidth <= 500) {
+            pctCover = 90;
+        }
+
+        const pctUncovered = 100 - pctCover;
 
         const leftCloud = document.getElementById("cloud-image-left");
         const rightCloud = document.getElementById("cloud-image-right");
 
         if (leftCloud && rightCloud) {
             if (scroll < fullCoverStart) {
-                leftCloud.style.transform = `translateX(${-100 + (scroll / fullCoverStart) * 60}%)`;
-                rightCloud.style.transform = `translateX(${100 - (scroll / fullCoverStart) * 60}%)`;
+                leftCloud.style.transform = `translateX(${-100 + (scroll / fullCoverStart) * pctCover}%)`;
+                rightCloud.style.transform = `translateX(${100 - (scroll / fullCoverStart) * pctCover}%)`;
             } else if (fullCoverStart <= scroll && scroll <= fullCoverEnd) {
-                leftCloud.style.transform = `translateX(-40%)`;
-                rightCloud.style.transform = `translateX(40%)`;
+                leftCloud.style.transform = `translateX(-${pctUncovered}%)`;
+                rightCloud.style.transform = `translateX(${pctUncovered}%%)`;
             } else if (scroll <= end) {
                 leftCloud.style.transform = `translateX(${
-                    -40 - 60 * ((scroll - fullCoverEnd) / (end - fullCoverEnd))
+                    -pctUncovered - pctCover * ((scroll - fullCoverEnd) / (end - fullCoverEnd))
                 }%)`;
                 rightCloud.style.transform = `translateX(${
-                    40 + 60 * ((scroll - fullCoverEnd) / (end - fullCoverEnd))
+                    pctUncovered + pctCover * ((scroll - fullCoverEnd) / (end - fullCoverEnd))
                 }%)`;
             } else {
                 leftCloud.style.transform = `translateX(-100%)`;
