@@ -24,6 +24,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     private deviceHeight: number = -1;
     private contentHeight: number = -1;
     private ratio: number = 1;
+    private navBarHeight: number = 0;
 
     totalQuestions = 0;
     easyQuestions = 0;
@@ -49,7 +50,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     };
 
     updateElements() {
-        console.log(window.scrollY / this.deviceHeight);
+        //console.log(window.scrollY / this.deviceHeight);
         this.updateBackground();
         this.updateProjectIntroCard();
         this.updateClouds();
@@ -74,6 +75,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             this.contentHeight = window.innerHeight * 0.9 * this.ratio;
             document.documentElement.style.setProperty("--zoom-ratio", `${this.ratio}`);
 
+            const navBar = document.querySelector("nav-bar");
+            if (navBar) {
+                this.navBarHeight = navBar.getBoundingClientRect().height;
+            }
+
             window.addEventListener("scroll", this.scrollHandler);
 
             window.addEventListener("resize", () => {
@@ -85,6 +91,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                     this.deviceHeight = window.innerHeight * this.ratio;
                     this.contentHeight = window.innerHeight * 0.9 * this.ratio;
                     document.documentElement.style.setProperty("--zoom-ratio", `${currentRatio}`);
+                }
+
+                const navBar = document.querySelector("nav-bar");
+                if (navBar) {
+                    this.navBarHeight = navBar.getBoundingClientRect().height;
                 }
             });
 
@@ -98,7 +109,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 });
             }
 
-            this.fetchLeetcodeStats();
+            //this.fetchLeetcodeStats();
         }
     }
 
@@ -164,7 +175,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 oceanIntro.classList.add("visible");
 
                 stickybits("#ocean-intro", {
-                    stickyBitStickyOffset: this.deviceHeight * 0.1,
+                    stickyBitStickyOffset: this.navBarHeight,
                     useStickyClasses: true,
                 });
             }
@@ -236,7 +247,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
             if (scroll >= start && scroll <= end) {
                 stickybits(`#project-${i}`, {
-                    stickyBitStickyOffset: this.deviceHeight * 0.1,
+                    stickyBitStickyOffset: this.navBarHeight,
                     useStickyClasses: true,
                 });
             } else {

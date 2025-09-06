@@ -110,26 +110,33 @@ span {
 .icon-devpost {
     width: 36px;
     height: 36px;
-    //background-image: url(../../../../public/devpost_logo.png);
+}
 
-    // mask: url(../../../../public/devpost_logo.png) no-repeat center;
-    // -webkit-mask: url(../../../../public/devpost_logo.png) no-repeat center;
+.project-card {
+    max-height: 80vh;
 }
 
 @media (min-width: 993px) {
     #last-project-ocean {
-        align-items: center;
         justify-content: end;
     }
 
-    .card {
+    .card.leetcode-card {
         margin-right: 10vw;
+    }
+
+    .leetcode-container {
+        align-items: center;
     }
 }
 
 @media (max-width: 992px) {
     .card {
         max-width: 90vw !important;
+    }
+
+    .project-card {
+        width: 90vw !important;
     }
 
     #project-start-intro {
@@ -146,13 +153,21 @@ span {
         align-items: start;
         justify-content: center;
     }
+
+    .leetcode-container {
+        flex-direction: column;
+    }
 }
 
-// @media (max-width: 767px) {
-//     .card {
-//         top: 3%;
-//     }
-// }
+@media (max-width: 800px) {
+    .project-card {
+        flex-direction: column;
+    }
+
+    .project-body {
+        width: 100%;
+    }
+}
 
 @media (max-width: 430px) {
     .card {
