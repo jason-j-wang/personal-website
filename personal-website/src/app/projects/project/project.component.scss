@@ -48,12 +48,12 @@
 }
 
 .project-complete-container {
-    height: calc(180vh * var(--zoom-ratio, 1));
+    height: calc(135vh * var(--zoom-ratio, 1));
     z-index: 10;
 }
 
 .project-container {
-    height: calc(90vh * var(--zoom-ratio, 1));
+    //height: calc(90vh * var(--zoom-ratio, 1));
     transition: opacity 0.5s ease;
 }
 
@@ -62,11 +62,11 @@
 }
 
 .ocean1 {
-    height: calc(90vh * var(--zoom-ratio, 1));
+    height: max(calc(90vh * var(--zoom-ratio, 1)), 90vh);
 }
 
 .ocean2 {
-    height: calc(90vh * var(--zoom-ratio, 1));
+    height: max(calc(90vh * var(--zoom-ratio, 1)), 90vh);
 }
 
 p {
@@ -93,10 +93,6 @@ span {
 .icon-devpost {
     width: 36px;
     height: 36px;
-}
-
-.project-card {
-    max-height: 80vh;
 }
 
 @media (min-width: 993px) {
@@ -149,6 +145,29 @@ span {
 
     .project-body {
         width: 100%;
+    }
+}
+@media (max-width: 767px) {
+    .ocean-floor::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background-image: url(../../../../public/ocean_floor.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .ocean-floor {
+        height: 90vh;
+    }
+
+    .ocean-floor-img {
+        display: none;
     }
 }
 

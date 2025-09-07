@@ -50,7 +50,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     };
 
     updateElements() {
-        //console.log(window.scrollY / this.deviceHeight);
+        console.log(window.scrollY / this.deviceHeight);
         this.updateBackground();
         this.updateProjectIntroCard();
         this.updateClouds();
@@ -109,7 +109,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 });
             }
 
-            //this.fetchLeetcodeStats();
+            this.fetchLeetcodeStats();
         }
     }
 
@@ -236,7 +236,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
     updateProjects() {
         const numProjects = 5;
-        const projectTotalHeight = this.contentHeight * 2;
+        const projectTotalHeight = this.contentHeight * 1.5;
         const projectsStart = this.contentHeight * 4.5;
         const scroll = window.scrollY;
 
@@ -244,24 +244,10 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             const start = projectsStart + (numProjects - i) * projectTotalHeight;
             const end = start + projectTotalHeight;
 
-            const fadeInStart = start;
-            const fadeInEnd = start + this.contentHeight * 0.5;
-            const fadeOutStart = end - this.contentHeight * 0.5;
-            const fadeOutEnd = end;
+            const fadeInEnd = start;
+            const fadeOutStart = end;
 
             const div = document.getElementById(`project-${i}`);
-
-            if (scroll >= start && scroll <= end) {
-                stickybits(`#project-${i}`, {
-                    stickyBitStickyOffset: this.navBarHeight,
-                    useStickyClasses: true,
-                });
-            } else {
-                stickybits(`#project-${i}`, {
-                    stickyBitStickyOffset: 0,
-                    useStickyClasses: false,
-                });
-            }
 
             if (div) {
                 if (scroll >= fadeInEnd && scroll <= fadeOutStart) {
