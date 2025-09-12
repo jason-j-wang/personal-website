@@ -137,13 +137,17 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
     updateBackground() {
         const scroll = window.scrollY;
-        const startHeight = this.contentHeight * 4.5;
+        const startHeight = this.contentHeight * 5.5;
         const maxScroll = document.body.scrollHeight - window.innerHeight - this.contentHeight;
 
         const scrollFraction = (scroll - startHeight) / (maxScroll - startHeight);
 
-        const startColour = [8, 164, 236];
+        const startColour = [0, 88, 197];
         const endColour = [19, 40, 89];
+
+        if (scroll >= this.contentHeight) {
+            document.body.style.backgroundColor = `rgb(${startColour.join(",")})`;
+        }
 
         if (scroll >= startHeight && scroll <= maxScroll) {
             const interpolated = startColour.map((start, i) =>
