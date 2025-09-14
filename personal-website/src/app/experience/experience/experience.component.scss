@@ -5,6 +5,12 @@
     background-repeat: no-repeat;
 }
 
+@media (min-width: 768px) {
+    .right-side {
+        justify-content: end;
+    }
+}
+
 @media (max-width: 992px) {
     .experience-container {
         justify-content: center;

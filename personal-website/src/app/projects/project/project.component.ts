@@ -161,13 +161,14 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
     updateProjectIntroCard() {
         const introStopAt = this.contentHeight;
-        const projectStopAt = 4 * this.contentHeight;
+        const projectStopAt = 3.75 * this.contentHeight;
         const oceanIntro = document.getElementById("ocean-intro");
         if (oceanIntro) {
             if (window.scrollY > projectStopAt) {
                 // Out of range
                 oceanIntro.classList.remove("visible");
                 oceanIntro.classList.add("invisible");
+                console.log("out of range");
 
                 stickybits("#ocean-intro", {
                     stickyBitStickyOffset: 0,
