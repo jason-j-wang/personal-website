@@ -25,6 +25,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     private contentHeight: number = -1;
     private ratio: number = 1;
     private navBarHeight: number = 0;
+    private prevScroll: number = 0;
 
     totalQuestions = 0;
     easyQuestions = 0;
@@ -55,6 +56,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         this.updateProjectIntroCard();
         this.updateClouds();
         this.updateProjects();
+        this.updateFish();
     }
 
     ngAfterViewInit() {
@@ -110,6 +112,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             }
 
             this.fetchLeetcodeStats();
+            this.initFish();
         }
     }
 
@@ -270,5 +273,52 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             top: this.contentHeight * numContentHeights,
             behavior: "smooth",
         });
+    }
+
+    initFish() {
+        const numFishes = 1;
+        const startFromRight = [1];
+        const offsets = [7];
+
+        for (let i = 1; i <= numFishes; i++) {
+            const container = document.getElementById(`fish-container${i}`);
+            const fish = document.getElementById(`fish${i}`);
+            if (fish && container) {
+                container.style.top = `${this.contentHeight * offsets[i - 1]}px`;
+                if (startFromRight.includes(i)) {
+                    fish.classList.add("fish-right");
+                } else {
+                    fish.classList.add("fish-left");
+                }
+            }
+        }
+    }
+
+    updateFish() {
+        const numFishes = 1;
+        const startFromRight = [1];
+        const offsets = [7];
+        const scroll = window.scrollY;
+        const windows = [[7, 7.5]];
+        const speed = [2];
+
+        for (let i = 1; i <= numFishes; i++) {
+            const container = document.getElementById(`fish-container${i}`);
+            const fish = document.getElementById(`fish${i}`);
+            if (fish && container && scroll >= this.contentHeight * offsets[i - 1]) {
+                if (this.prevScroll < scroll) {
+                    if (fish.classList.contains("start-right")) {
+                        fish.classList.add("fish-right");
+                        fish.classList.remove("fish-left");
+                    } else {
+                        fish.classList.add("fish-left");
+                        fish.classList.remove("fish-right");
+                    }
+                } else {
+                }
+            }
+        }
+
+        this.prevScroll = scroll;
     }
 }

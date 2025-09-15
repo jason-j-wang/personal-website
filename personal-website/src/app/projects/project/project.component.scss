@@ -103,6 +103,28 @@ span {
     width: 100%;
 }
 
+.fish {
+    position: absolute;
+    max-height: 100px;
+}
+
+.fish-left {
+    transform: scaleY(-1);
+}
+
+.fish-right {
+    transform: scaleY(1);
+}
+
+.fish-container {
+    height: 200px;
+    width: 100%;
+}
+
+.start-right {
+    right: -25%;
+}
+
 @media (min-width: 993px) {
     #last-project-ocean {
         justify-content: end;
