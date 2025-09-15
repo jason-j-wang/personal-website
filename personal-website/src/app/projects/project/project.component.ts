@@ -44,6 +44,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         private http: HttpClient
     ) {
         this.isBrowser = isPlatformBrowser(platformId);
+        this.animateFish = this.animateFish.bind(this);
     }
 
     private scrollHandler = () => {
@@ -51,12 +52,11 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     };
 
     updateElements() {
-        console.log(window.scrollY / this.deviceHeight);
         this.updateBackground();
         this.updateProjectIntroCard();
         this.updateClouds();
         this.updateProjects();
-        this.updateFish();
+        this.updateScrollFish();
     }
 
     ngAfterViewInit() {
@@ -72,7 +72,6 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
         if (this.isBrowser) {
             this.ratio = window.devicePixelRatio;
-            console.log(this.ratio);
             this.deviceHeight = window.innerHeight * this.ratio;
             this.contentHeight = window.innerHeight * 0.9 * this.ratio;
             document.documentElement.style.setProperty("--zoom-ratio", `${this.ratio}`);
@@ -88,7 +87,6 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 const currentRatio = window.devicePixelRatio;
 
                 if (currentRatio !== this.ratio) {
-                    console.log("Zoom changed! New ratio:", currentRatio);
                     this.ratio = currentRatio;
                     this.deviceHeight = window.innerHeight * this.ratio;
                     this.contentHeight = window.innerHeight * 0.9 * this.ratio;
@@ -112,17 +110,15 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
             }
 
             this.fetchLeetcodeStats();
-            this.initFish();
+            this.animateFish();
         }
     }
 
     fetchLeetcodeStats() {
-        console.log("fetch");
         const url = "https://leetscan.vercel.app/jason--w";
         const data = this.http.get(url).subscribe({
             next: (data) => {
                 const lcData = data as LeetcodeData;
-                console.log(data);
                 this.totalQuestions = lcData.totalSolved;
                 this.easyQuestions = lcData.easySolved;
                 this.mediumQuestions = lcData.mediumSolved;
@@ -171,7 +167,6 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 // Out of range
                 oceanIntro.classList.remove("visible");
                 oceanIntro.classList.add("invisible");
-                console.log("out of range");
 
                 stickybits("#ocean-intro", {
                     stickyBitStickyOffset: 0,
@@ -268,57 +263,92 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     scrollTo(numContentHeights: number) {
-        console.log(numContentHeights);
         window.scrollTo({
             top: this.contentHeight * numContentHeights,
             behavior: "smooth",
         });
     }
 
-    initFish() {
-        const numFishes = 1;
-        const startFromRight = [1];
-        const offsets = [7];
-
-        for (let i = 1; i <= numFishes; i++) {
-            const container = document.getElementById(`fish-container${i}`);
-            const fish = document.getElementById(`fish${i}`);
-            if (fish && container) {
-                container.style.top = `${this.contentHeight * offsets[i - 1]}px`;
-                if (startFromRight.includes(i)) {
-                    fish.classList.add("fish-right");
-                } else {
-                    fish.classList.add("fish-left");
-                }
-            }
-        }
-    }
-
-    updateFish() {
-        const numFishes = 1;
-        const startFromRight = [1];
-        const offsets = [7];
+    updateScrollFish() {
+        const offsets = [5, 6.25, 6.5, 8];
         const scroll = window.scrollY;
-        const windows = [[7, 7.5]];
-        const speed = [2];
+        const speed = [0.5, 0.2, 0.3, 0.4];
 
-        for (let i = 1; i <= numFishes; i++) {
+        for (let i = 1; i <= offsets.length; i++) {
             const container = document.getElementById(`fish-container${i}`);
             const fish = document.getElementById(`fish${i}`);
             if (fish && container && scroll >= this.contentHeight * offsets[i - 1]) {
                 if (this.prevScroll < scroll) {
                     if (fish.classList.contains("start-right")) {
-                        fish.classList.add("fish-right");
-                        fish.classList.remove("fish-left");
+                        fish.style.transform = "scaleX(1)";
+                        let oldPct = parseFloat(fish.style.right);
+                        if (isNaN(oldPct)) {
+                            oldPct = 25;
+                        }
+                        fish.style.right = `${oldPct + speed[i - 1]}%`;
                     } else {
-                        fish.classList.add("fish-left");
-                        fish.classList.remove("fish-right");
+                        fish.style.transform = "scaleX(-1)";
+                        let oldPct = parseFloat(fish.style.left);
+                        if (isNaN(oldPct)) {
+                            oldPct = 25;
+                        }
+                        fish.style.left = `${oldPct + speed[i - 1]}%`;
                     }
                 } else {
+                    if (fish.classList.contains("start-right")) {
+                        fish.style.transform = "scaleX(-1)";
+                        let oldPct = parseFloat(fish.style.right);
+                        if (isNaN(oldPct)) {
+                            oldPct = 25;
+                        }
+                        fish.style.right = `${oldPct - speed[i - 1]}%`;
+                    } else {
+                        fish.style.transform = "scaleX(1)";
+                        let oldPct = parseFloat(fish.style.left);
+                        if (isNaN(oldPct)) {
+                            oldPct = 25;
+                        }
+                        fish.style.left = `${oldPct - speed[i - 1]}%`;
+                    }
                 }
             }
         }
 
         this.prevScroll = scroll;
+    }
+
+    animateFish() {
+        const fishIds = ["fish5", "fish6", "fish7"];
+        const speeds = [0.4, 0.3, 0.15];
+        for (let i = 0; i <= fishIds.length; i++) {
+            const fish = document.getElementById(fishIds[i]);
+            if (fish) {
+                if (fish.getAttribute("dir") === "left") {
+                    fish.style.transform = "scaleX(1)";
+                    let oldPct = parseFloat(fish.style.left);
+                    if (isNaN(oldPct)) {
+                        oldPct = 25;
+                    }
+                    fish.style.left = `${oldPct - speeds[i]}%`;
+
+                    if (oldPct - speeds[i] < -25) {
+                        fish.setAttribute("dir", "right");
+                    }
+                } else {
+                    fish.style.transform = "scaleX(-1)";
+
+                    let oldPct = parseFloat(fish.style.left);
+                    if (isNaN(oldPct)) {
+                        oldPct = 25;
+                    }
+                    fish.style.left = `${oldPct + speeds[i]}%`;
+
+                    if (oldPct + speeds[i] > 125) {
+                        fish.setAttribute("dir", "left");
+                    }
+                }
+            }
+        }
+        requestAnimationFrame(this.animateFish);
     }
 }

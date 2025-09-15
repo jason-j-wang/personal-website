@@ -106,6 +106,7 @@ span {
 .fish {
     position: absolute;
     max-height: 100px;
+    opacity: 0.8;
 }
 
 .fish-left {
@@ -121,8 +122,40 @@ span {
     width: 100%;
 }
 
+#fish-container1 {
+    top: calc(600vh * var(--zoom-ratio, 1));
+}
+
+#fish-container2 {
+    top: calc(725vh * var(--zoom-ratio, 1));
+}
+
+#fish-container3 {
+    top: calc(730vh * var(--zoom-ratio, 1));
+}
+
+#fish-container4 {
+    top: calc(1000vh * var(--zoom-ratio, 1));
+}
+
+#fish5 {
+    top: 5vh;
+}
+
+#fish6 {
+    top: 20vh;
+}
+
+#fish7 {
+    top: 40vh;
+}
+
 .start-right {
     right: -25%;
+}
+
+.start-left {
+    left: -25%;
 }
 
 @media (min-width: 993px) {

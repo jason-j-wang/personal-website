@@ -20,7 +20,6 @@ export class NavBarComponent {
     ngAfterViewInit() {
         if (isPlatformBrowser(this.platformId)) {
             setTimeout(() => {
-                console.log(window.location.href);
                 const title = window.location.href.split("/").slice(-1)[0];
                 this.title = title.charAt(0).toUpperCase() + title.slice(1);
             });
