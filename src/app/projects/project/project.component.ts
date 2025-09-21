@@ -55,7 +55,6 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         this.updateBackground();
         this.updateProjectIntroCard();
         this.updateClouds();
-        this.updateProjects();
         this.updateScrollFish();
     }
 
@@ -160,13 +159,13 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
     updateProjectIntroCard() {
         const introStopAt = this.contentHeight;
-        const projectStopAt = 3.75 * this.contentHeight;
+        const projectStopAt = 4 * this.contentHeight;
         const oceanIntro = document.getElementById("ocean-intro");
         if (oceanIntro) {
             if (window.scrollY > projectStopAt) {
                 // Out of range
                 oceanIntro.classList.remove("visible");
-                oceanIntro.classList.add("invisible");
+                //oceanIntro.classList.add("invisible");
 
                 stickybits("#ocean-intro", {
                     stickyBitStickyOffset: 0,
@@ -174,7 +173,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                 });
             } else {
                 // Within range
-                oceanIntro.classList.remove("invisible");
+                //oceanIntro.classList.remove("invisible");
                 oceanIntro.classList.add("visible");
 
                 stickybits("#ocean-intro", {
@@ -237,42 +236,24 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
         }
     }
 
-    updateProjects() {
-        const numProjects = 5;
-        const projectTotalHeight = this.contentHeight * 1.5;
-        const projectsStart = this.contentHeight * 4.5;
-        const scroll = window.scrollY;
-
-        for (let i = 1; i <= numProjects; i++) {
-            const start = projectsStart + (numProjects - i) * projectTotalHeight;
-            const end = start + projectTotalHeight;
-
-            const fadeInEnd = start;
-            const fadeOutStart = end;
-
-            const div = document.getElementById(`project-${i}`);
-
-            if (div) {
-                if (scroll >= fadeInEnd && scroll <= fadeOutStart) {
-                    div.style.opacity = "1";
-                } else {
-                    div.style.opacity = "0";
-                }
-            }
-        }
+    scrollTo(divId: string) {
+        document.getElementById(divId)?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
     }
 
-    scrollTo(numContentHeights: number) {
+    scrollToHeight(amount: number) {
         window.scrollTo({
-            top: this.contentHeight * numContentHeights,
+            top: this.contentHeight * amount,
             behavior: "smooth",
         });
     }
 
     updateScrollFish() {
-        const offsets = [5, 6.25, 6.5, 8];
+        const offsets = [5.5, 6.25, 6.5, 9];
         const scroll = window.scrollY;
-        const speed = [0.5, 0.2, 0.3, 0.4];
+        const speed = [0.3, 0.2, 0.3, 0.4];
 
         for (let i = 1; i <= offsets.length; i++) {
             const container = document.getElementById(`fish-container${i}`);
@@ -283,14 +264,14 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                         fish.style.transform = "scaleX(1)";
                         let oldPct = parseFloat(fish.style.right);
                         if (isNaN(oldPct)) {
-                            oldPct = 25;
+                            oldPct = 0;
                         }
                         fish.style.right = `${oldPct + speed[i - 1]}%`;
                     } else {
                         fish.style.transform = "scaleX(-1)";
                         let oldPct = parseFloat(fish.style.left);
                         if (isNaN(oldPct)) {
-                            oldPct = 25;
+                            oldPct = 0;
                         }
                         fish.style.left = `${oldPct + speed[i - 1]}%`;
                     }
@@ -299,14 +280,14 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
                         fish.style.transform = "scaleX(-1)";
                         let oldPct = parseFloat(fish.style.right);
                         if (isNaN(oldPct)) {
-                            oldPct = 25;
+                            oldPct = 0;
                         }
                         fish.style.right = `${oldPct - speed[i - 1]}%`;
                     } else {
                         fish.style.transform = "scaleX(1)";
                         let oldPct = parseFloat(fish.style.left);
                         if (isNaN(oldPct)) {
-                            oldPct = 25;
+                            oldPct = 0;
                         }
                         fish.style.left = `${oldPct - speed[i - 1]}%`;
                     }

@@ -19,7 +19,7 @@
                                     </p>
                                 </div>
                                 <div class="w-[100%] mt-[20px] flex justify-end">
-                                    <button class="btn btn-soft" (click)="scrollTo(2)">Next ></button>
+                                    <button class="btn btn-soft" (click)="scrollToHeight(2)">Next ></button>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                                 </p>
                             </div>
                             <div class="card-actions justify-end mb-5">
-                                <button class="btn btn-soft" (click)="scrollTo(0)">< Prev</button>
-                                <button class="btn btn-soft" (click)="scrollTo(5.25)">Next ></button>
+                                <button class="btn btn-soft" (click)="scrollToHeight(0)">< Prev</button>
+                                <button class="btn btn-soft" (click)="scrollTo('project-5-card')">Next ></button>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,10 @@
     <div class="project-complete-container flex items-center justify-center">
         <div id="project-5" class="project-container flex justify-center">
             <div class="w-[90%] flex items-center justify-center">
-                <div id="project-5-card" class="card project-card card-side bg-base-100 shadow-sm w-[65rem]">
+                <div
+                    id="project-5-card"
+                    class="card project-card card-side bg-base-100 shadow-sm w-[65rem] scroll-mt-[15vh]"
+                >
                     <figure>
                         <img src="/website.png" class="object-right" alt="Project Picture" />
                     </figure>
@@ -143,8 +146,8 @@
                         </div>
 
                         <div class="card-actions justify-end mt-auto">
-                            <button class="btn btn-soft" (click)="scrollTo(2)">< Prev</button>
-                            <button class="btn btn-soft" (click)="scrollTo(6.75)">Next ></button>
+                            <button class="btn btn-soft" (click)="scrollToHeight(2)">< Prev</button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-4-card')">Next ></button>
                         </div>
                     </div>
                 </div>
@@ -154,7 +157,10 @@
     <div class="project-complete-container flex items-center justify-center">
         <div id="project-4" class="project-container flex justify-center">
             <div class="w-[90%] flex items-center justify-center">
-                <div id="project-4-card" class="card project-card card-side bg-base-100 shadow-sm w-[65rem]">
+                <div
+                    id="project-4-card"
+                    class="card project-card card-side bg-base-100 shadow-sm w-[65rem] scroll-mt-[15vh]"
+                >
                     <figure>
                         <img src="/termiknow_picture.png" alt="Project Picture" />
                     </figure>
@@ -188,8 +194,8 @@
                         </div>
 
                         <div class="card-actions justify-end mt-auto">
-                            <button class="btn btn-soft" (click)="scrollTo(5.25)">< Prev</button>
-                            <button class="btn btn-soft" (click)="scrollTo(8.25)">Next ></button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-5-card')">< Prev</button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-3-card')">Next ></button>
                         </div>
                     </div>
                 </div>
@@ -199,7 +205,10 @@
     <div class="project-complete-container flex items-center justify-center">
         <div id="project-3" class="project-container flex justify-center">
             <div class="w-[90%] flex items-center justify-center">
-                <div id="project-3-card" class="card project-card card-side bg-base-100 shadow-sm w-[65rem]">
+                <div
+                    id="project-3-card"
+                    class="card project-card card-side bg-base-100 shadow-sm w-[65rem] scroll-mt-[15vh]"
+                >
                     <figure>
                         <img src="/insightubc_picture.JPG" alt="Project Picture" />
                     </figure>
@@ -218,8 +227,8 @@
                         </div>
 
                         <div class="card-actions justify-end mt-auto">
-                            <button class="btn btn-soft" (click)="scrollTo(6.75)">< Prev</button>
-                            <button class="btn btn-soft" (click)="scrollTo(9.75)">Next ></button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-4-card')">< Prev</button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-2-card')">Next ></button>
                         </div>
                     </div>
                 </div>
@@ -229,7 +238,10 @@
     <div class="project-complete-container flex items-center justify-center">
         <div id="project-2" class="project-container flex justify-center">
             <div class="w-[90%] flex items-center justify-center">
-                <div id="project-2-card" class="card project-card card-side bg-base-100 shadow-sm w-[65rem]">
+                <div
+                    id="project-2-card"
+                    class="card project-card card-side bg-base-100 shadow-sm w-[65rem] scroll-mt-[15vh]"
+                >
                     <figure>
                         <img src="/chessbot_picture.png" alt="Movie" />
                     </figure>
@@ -258,8 +270,8 @@
                         </div>
 
                         <div class="card-actions justify-end mt-auto">
-                            <button class="btn btn-soft" (click)="scrollTo(8.25)">< Prev</button>
-                            <button class="btn btn-soft" (click)="scrollTo(11.25)">Next ></button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-3-card')">< Prev</button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-1-card')">Next ></button>
                         </div>
                     </div>
                 </div>
@@ -269,7 +281,10 @@
     <div class="project-complete-container flex items-center justify-center">
         <div id="project-1" class="project-container flex justify-center">
             <div class="w-[90%] flex items-center justify-center">
-                <div id="project-1-card" class="card project-card card-side bg-base-100 shadow-sm w-[65rem]">
+                <div
+                    id="project-1-card"
+                    class="card project-card card-side bg-base-100 shadow-sm w-[65rem] scroll-mt-[15vh]"
+                >
                     <figure>
                         <img src="fighter_picture.png" alt="Project Picture" />
                     </figure>
@@ -297,8 +312,8 @@
                         </div>
 
                         <div class="card-actions justify-end mt-auto">
-                            <button class="btn btn-soft" (click)="scrollTo(9.75)">< Prev</button>
-                            <button class="btn btn-soft" (click)="scrollTo(100)">Next ></button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-2-card')">< Prev</button>
+                            <button class="btn btn-soft" (click)="scrollTo('project-end-card')">Next ></button>
                         </div>
                     </div>
                 </div>
@@ -341,9 +356,9 @@
             class="card card-side bg-base-100 shadow-sm absolute bottom-0 w-[30rem] mb-[20vh] flex justify-center items-center z-10"
         >
             <div class="w-[95%] flex justify-between items-center flex-wrap p-4 gap-y-4">
-                <button class="btn btn-soft" (click)="scrollTo(11.25)">< Prev</button>
+                <button class="btn btn-soft" (click)="scrollTo('project-1-card')">< Prev</button>
                 The End!
-                <button class="btn btn-soft" (click)="scrollTo(0)">Back to Top ></button>
+                <button class="btn btn-soft" (click)="scrollToHeight(0)">Back to Top ></button>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@
 .ocean2 {
     background-image: url(../../../../public/ocean2.png);
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
 }
 
@@ -83,7 +83,7 @@ span {
 
 .waves-container {
     height: calc(90vh * var(--zoom-ratio, 1));
-    margin-top: calc(360vh * var(--zoom-ratio, 1));
+    margin-top: calc(380vh * var(--zoom-ratio, 1));
 }
 
 .waves {
