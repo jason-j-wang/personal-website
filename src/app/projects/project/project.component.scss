@@ -9,7 +9,7 @@
 }
 
 .project-start {
-    height: calc(450vh * var(--zoom-ratio, 1));
+    height: calc(360vh * var(--zoom-ratio, 1));
 }
 
 .ocean1 {
@@ -22,7 +22,7 @@
 .ocean2 {
     background-image: url(../../../../public/ocean2.png);
     background-size: cover;
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -65,9 +65,9 @@
     height: max(calc(90vh * var(--zoom-ratio, 1)), 90vh);
 }
 
-.ocean2 {
-    height: max(calc(90vh * var(--zoom-ratio, 1)), 90vh);
-}
+// .ocean2 {
+//     height: max(calc(90vh * var(--zoom-ratio, 1)), 90vh);
+// }
 
 p {
     font-size: 16px;
@@ -83,7 +83,7 @@ span {
 
 .waves-container {
     height: calc(90vh * var(--zoom-ratio, 1));
-    margin-top: calc(380vh * var(--zoom-ratio, 1));
+    margin-top: calc(290vh * var(--zoom-ratio, 1));
 }
 
 .waves {
@@ -127,19 +127,19 @@ span {
 }
 
 #fish-container1 {
-    top: calc(600vh * var(--zoom-ratio, 1));
+    top: calc(510vh * var(--zoom-ratio, 1));
 }
 
 #fish-container2 {
-    top: calc(725vh * var(--zoom-ratio, 1));
+    top: calc(635vh * var(--zoom-ratio, 1));
 }
 
 #fish-container3 {
-    top: calc(730vh * var(--zoom-ratio, 1));
+    top: calc(640vh * var(--zoom-ratio, 1));
 }
 
 #fish-container4 {
-    top: calc(1000vh * var(--zoom-ratio, 1));
+    top: calc(910vh * var(--zoom-ratio, 1));
 }
 
 #fish5 {

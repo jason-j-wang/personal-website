@@ -159,23 +159,17 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
 
     updateProjectIntroCard() {
         const introStopAt = this.contentHeight;
-        const projectStopAt = 4 * this.contentHeight;
+        const projectStopAt = 3 * this.contentHeight;
         const oceanIntro = document.getElementById("ocean-intro");
         if (oceanIntro) {
             if (window.scrollY > projectStopAt) {
                 // Out of range
-                oceanIntro.classList.remove("visible");
-                //oceanIntro.classList.add("invisible");
-
                 stickybits("#ocean-intro", {
-                    stickyBitStickyOffset: 0,
+                    stickyBitStickyOffset: this.navBarHeight,
                     useStickyClasses: false,
                 });
             } else {
                 // Within range
-                //oceanIntro.classList.remove("invisible");
-                oceanIntro.classList.add("visible");
-
                 stickybits("#ocean-intro", {
                     stickyBitStickyOffset: this.navBarHeight,
                     useStickyClasses: true,
@@ -251,7 +245,7 @@ export class ProjectComponent implements AfterViewInit, OnDestroy {
     }
 
     updateScrollFish() {
-        const offsets = [5.5, 6.25, 6.5, 9];
+        const offsets = [4.5, 5.25, 5.5, 8];
         const scroll = window.scrollY;
         const speed = [0.3, 0.2, 0.3, 0.4];
 
